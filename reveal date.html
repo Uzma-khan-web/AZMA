@@ -10,7 +10,17 @@
 
 <style>
 
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html, body{
+width:100%;
+height:100%;
+overflow-x:hidden;   /* ✅ FIX horizontal scroll */
+}
 
 body{
 min-height:100vh;
@@ -18,22 +28,23 @@ display:flex;
 justify-content:center;
 align-items:center;
 text-align:center;
-overflow:hidden;
 font-family:'Poppins',sans-serif;
 background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
 position:relative;
 color:#4a3f35;
 padding:20px;
+overflow-y:auto;   /* ✅ allow vertical but safe */
 }
 
 /* glow */
 body::before, body::after{
 content:'';
-position:absolute;
+position:fixed;   /* ✅ FIX: fixed instead of absolute */
 border-radius:50%;
 filter:blur(140px);
 opacity:.45;
 z-index:-1;
+pointer-events:none;
 }
 
 body::before{
@@ -50,19 +61,19 @@ bottom:-250px;left:-150px;
 
 /* sparks */
 .spark{
-position:absolute;
+position:fixed;   /* ✅ FIX */
 width:5px;
 height:5px;
 background:#d8a7b1;
 border-radius:50%;
 opacity:.5;
 animation:rise 12s linear infinite;
-z-index:0;
+pointer-events:none;
 }
 
 @keyframes rise{
 from{transform:translateY(100vh);}
-to{transform:translateY(-100px);}
+to{transform:translateY(-120vh);}
 }
 
 .container{
@@ -93,7 +104,6 @@ padding:0 10px;
 .heart-wrapper{
 margin-top:50px;
 cursor:pointer;
-transition:.5s;
 }
 
 .heart{
@@ -117,19 +127,12 @@ font-size:0.9rem;
 .reveal{
 display:none;
 margin-top:40px;
-animation:revealBox 1s ease;
-}
-
-@keyframes revealBox{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
 }
 
 .line{
 color:#555;
 min-height:30px;
 margin:10px 0;
-font-size:1rem;
 }
 
 /* DATE */
@@ -148,7 +151,6 @@ font-size:1.2rem;
 margin-top:12px;
 color:#8b6f75;
 opacity:0;
-letter-spacing:1px;
 }
 
 /* FINAL */
@@ -163,8 +165,6 @@ font-size:0.95rem;
 .next-btn{
 opacity:0;
 margin-top:35px;
-transition:1s;
-transform:translateY(20px);
 }
 
 .next-btn a{
@@ -176,13 +176,7 @@ text-decoration:none;
 display:inline-block;
 }
 
-/* SHOW */
-.next-btn.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* ANIMATIONS */
+/* ANIMATIONS SAME */
 .date.show{
 animation:datePop 1.4s ease forwards, dateGlow 2.5s infinite alternate;
 }
@@ -219,39 +213,24 @@ to{opacity:1;transform:translateY(0);}
 
 /* FLOATING HEARTS */
 .heart-float{
-position:fixed;
+position:fixed;   /* ✅ FIX */
 font-size:18px;
 animation:floatUp 8s linear forwards;
+pointer-events:none;
 }
 
 @keyframes floatUp{
 0%{transform:translateY(100vh);opacity:0;}
 20%{opacity:1;}
-100%{transform:translateY(-100px);opacity:0;}
+100%{transform:translateY(-120px);opacity:0;}
 }
 
-/* 📱 MOBILE RESPONSIVE FIX */
+/* 📱 MOBILE FIX */
 @media(max-width:768px){
 
-h1{
-font-size:3.2rem;
-}
-
-.date{
-font-size:2.8rem;
-}
-
-.heart{
-font-size:4.5rem;
-}
-
-.subtitle{
-font-size:0.95rem;
-}
-
-.line{
-font-size:0.95rem;
-}
+h1{font-size:3rem;}
+.date{font-size:2.6rem;}
+.heart{font-size:4rem;}
 
 .next-btn a{
 padding:12px 28px;
@@ -262,12 +241,6 @@ font-size:0.95rem;
 padding:15px;
 }
 
-}
-
-/* VERY SMALL DEVICES */
-@media(max-width:380px){
-h1{font-size:2.8rem;}
-.date{font-size:2.3rem;}
 }
 
 </style>
@@ -311,16 +284,15 @@ Every second until then, I'll be counting with you ❤️
 
 <script>
 
-/* spark particles */
 for(let i=0;i<25;i++){
 let s=document.createElement("div");
 s.className="spark";
-s.style.left=Math.random()*100+"vw";
+s.style.left=Math.random()*100+"%";  // ✅ FIX vw issue
+s.style.top=Math.random()*100+"%";
 s.style.animationDuration=(8+Math.random()*10)+"s";
 document.body.appendChild(s);
 }
 
-/* typewriter */
 function type(el,text,speed){
 let i=0;
 let t=setInterval(()=>{
@@ -330,24 +302,20 @@ if(i>=text.length) clearInterval(t);
 },speed);
 }
 
-/* floating hearts */
 function hearts(){
 setInterval(()=>{
 let h=document.createElement("div");
 h.className="heart-float";
 h.innerHTML="❤️";
-h.style.left=Math.random()*100+"vw";
+h.style.left=Math.random()*100+"%"; // ✅ FIX
 document.body.appendChild(h);
 setTimeout(()=>h.remove(),8000);
-},400);
+},500);
 }
 
-/* click */
 document.getElementById("heart").onclick=function(){
 
-this.style.opacity="0";
-setTimeout(()=>this.style.display="none",500);
-
+this.style.display="none";
 document.getElementById("reveal").style.display="block";
 
 setTimeout(()=>type(document.getElementById("line1"),
