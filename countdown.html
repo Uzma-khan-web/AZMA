@@ -11,53 +11,56 @@
 <style>
 
 /* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
 min-height:100vh;
 font-family:'Poppins',sans-serif;
-overflow:hidden;
 position:relative;
 text-align:center;
 background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
 color:#4a3f35;
+overflow-x:hidden; /* FIX horizontal scroll */
 }
 
 /* SOFT GLOW */
-body::before{
+body::before,
+body::after{
 content:"";
-position:absolute;
-width:700px;
-height:700px;
-background:#f7d8de;
+position:fixed;
+width:650px;
+height:650px;
 border-radius:50%;
 filter:blur(140px);
+opacity:.5;
+z-index:-1;
+}
+
+body::before{
+background:#f7d8de;
 top:-250px;
 left:-250px;
-opacity:.5;
 }
 
 body::after{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
 background:#f8e6c8;
-border-radius:50%;
-filter:blur(140px);
 bottom:-250px;
-right:-200px;
-opacity:.5;
+right:-250px;
 }
 
 /* FLOATING HEARTS */
 .hearts::before,
 .hearts::after{
 content:"❤";
-position:absolute;
+position:fixed;
 font-size:30px;
 color:rgba(183,110,121,.25);
 animation:float 10s linear infinite;
+z-index:-1;
 }
 
 .hearts::before{left:20%;}
@@ -71,13 +74,14 @@ animation:float 10s linear infinite;
 
 /* STAR */
 .star{
-position:absolute;
+position:fixed;
 width:4px;
 height:4px;
 background:#d8a7b1;
 border-radius:50%;
 opacity:.6;
 animation:twinkle 2s infinite alternate;
+z-index:-1;
 }
 
 @keyframes twinkle{
@@ -92,9 +96,8 @@ display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-position:relative;
-z-index:10;
-padding:20px;
+padding:25px 15px;
+gap:10px;
 }
 
 /* HEADER */
@@ -106,15 +109,13 @@ color:#b76e79;
 
 h1{
 font-family:'Great Vibes',cursive;
-font-size:5rem;
+font-size:4.5rem;
 color:#b76e79;
-margin-top:10px;
 text-shadow:0 0 20px rgba(183,110,121,.15);
 }
 
 .subtitle{
-margin-top:10px;
-font-size:1.2rem;
+font-size:1.1rem;
 color:#6b5a5a;
 }
 
@@ -129,60 +130,54 @@ animation:beat 1.3s infinite;
 }
 
 .date{
-margin-top:15px;
+margin-top:10px;
 color:#b76e79;
-font-weight:600;
+font-weight:700;
+font-size:1.1rem;
 }
 
 /* COUNTDOWN */
 .countdown{
 display:flex;
-gap:25px;
+gap:18px;
 flex-wrap:wrap;
 justify-content:center;
-margin-top:50px;
+margin-top:35px;
+max-width:900px;
 }
 
-/* ✨ UPDATED GLASS + GLOW CARD */
+/* CARD */
 .box{
-width:150px;
-height:150px;
+width:140px;
+height:140px;
 background:rgba(255,255,255,.55);
-backdrop-filter:blur(15px);
-border-radius:30px;
+backdrop-filter:blur(12px);
+border-radius:25px;
 
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 
+box-shadow:0 10px 30px rgba(0,0,0,.05);
 position:relative;
 overflow:hidden;
-
-box-shadow:0 10px 30px rgba(0,0,0,.05);
-transition:.3s;
 }
 
-/* ✨ LIGHT ANIMATED BORDER GLOW */
+/* GLOW BORDER */
 .box::before{
 content:"";
 position:absolute;
 inset:-2px;
-border-radius:32px;
-
-background:linear-gradient(
-45deg,
+border-radius:28px;
+background:linear-gradient(45deg,
 rgba(183,110,121,0),
 rgba(183,110,121,.5),
 rgba(248,230,200,.6),
 rgba(183,110,121,.4),
 rgba(183,110,121,0)
 );
-
 filter:blur(6px);
-opacity:.7;
-z-index:0;
-
 animation:glowMove 4s linear infinite;
 }
 
@@ -191,75 +186,53 @@ animation:glowMove 4s linear infinite;
 100%{transform:rotate(360deg);}
 }
 
-/* content above glow */
-.box span,
-.box p{
-position:relative;
-z-index:2;
-}
-
 .box span{
-font-size:3rem;
+font-size:2.6rem;
 font-weight:700;
 color:#b76e79;
+position:relative;
 }
 
 .box p{
-margin-top:10px;
+font-size:.9rem;
 color:#6b5a5a;
-}
-
-/* hover effect */
-.box:hover{
-transform:translateY(-8px) scale(1.03);
-}
-
-.box:hover::before{
-opacity:1;
-filter:blur(8px);
+position:relative;
 }
 
 /* MESSAGE */
 .message{
-margin-top:40px;
-font-size:1.1rem;
+margin-top:25px;
+font-size:1rem;
 color:#6b5a5a;
 max-width:600px;
+padding:0 10px;
 }
 
 /* BUTTON */
 .btn{
-margin-top:35px;
-padding:15px 35px;
+margin-top:25px;
+padding:14px 30px;
 border:none;
 border-radius:50px;
 background:#b76e79;
 color:white;
 font-weight:700;
 cursor:pointer;
-box-shadow:0 10px 25px rgba(183,110,121,.25);
-transition:.3s;
 }
 
 .btn:hover{
-transform:translateY(-5px);
+transform:translateY(-4px);
 }
 
 .surprise{
 display:none;
-margin-top:20px;
+margin-top:15px;
 color:#b76e79;
-font-size:1.1rem;
-animation:fadeIn .8s ease;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
-}
-
+/* NEXT BUTTON */
 .next-btn{
-margin-top:30px;
+margin-top:25px;
 }
 
 .next-btn a{
@@ -268,11 +241,28 @@ padding:14px 30px;
 border-radius:40px;
 border:1px solid rgba(183,110,121,.4);
 color:#b76e79;
-transition:.3s;
+display:inline-block;
 }
 
-.next-btn a:hover{
-background:rgba(183,110,121,.1);
+/* RESPONSIVE FIX */
+@media(max-width:768px){
+
+h1{
+font-size:3rem;
+}
+
+.countdown{
+gap:12px;
+}
+
+.box{
+width:120px;
+height:120px;
+}
+
+.box span{
+font-size:2.2rem;
+}
 }
 
 </style>
@@ -295,7 +285,7 @@ background:rgba(183,110,121,.1);
 <h1>Countdown To Our Nikah</h1>
 
 <div class="subtitle">
-Uzma Khan <span class="heart">❤️</span> Azhar Khan
+Uzma ❤️ Azhar
 </div>
 
 <div class="date">26 December 2026</div>
@@ -309,9 +299,7 @@ Uzma Khan <span class="heart">❤️</span> Azhar Khan
 
 </div>
 
-<div class="message" id="quote">
-Every day brings us closer to forever ❤️
-</div>
+<div class="message">Every day brings us closer to forever ❤️</div>
 
 <button class="btn" onclick="showMessage()">
 Open Surprise 🎁
@@ -332,6 +320,7 @@ I can't wait to start this beautiful journey with you ❤️
 const weddingDate = new Date("December 26, 2026 00:00:00").getTime();
 
 setInterval(()=>{
+
 const now = new Date().getTime();
 const distance = weddingDate - now;
 
