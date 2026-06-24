@@ -23,12 +23,7 @@ font-family:'Poppins',sans-serif;
 background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
 position:relative;
 color:#4a3f35;
-animation:fadeBody 1.2s ease;
-}
-
-@keyframes fadeBody{
-from{opacity:0;transform:scale(1.02);}
-to{opacity:1;transform:scale(1);}
+padding:20px;
 }
 
 /* glow */
@@ -38,6 +33,7 @@ position:absolute;
 border-radius:50%;
 filter:blur(140px);
 opacity:.45;
+z-index:-1;
 }
 
 body::before{
@@ -61,6 +57,7 @@ background:#d8a7b1;
 border-radius:50%;
 opacity:.5;
 animation:rise 12s linear infinite;
+z-index:0;
 }
 
 @keyframes rise{
@@ -72,9 +69,11 @@ to{transform:translateY(-100px);}
 position:relative;
 z-index:10;
 max-width:850px;
-padding:20px;
+width:100%;
+padding:10px;
 }
 
+/* TITLE */
 h1{
 font-family:'Great Vibes',cursive;
 font-size:5rem;
@@ -82,12 +81,15 @@ color:#b76e79;
 margin-bottom:20px;
 }
 
+/* SUBTITLE */
 .subtitle{
 color:#666;
 line-height:2;
+font-size:1rem;
+padding:0 10px;
 }
 
-/* heart */
+/* HEART */
 .heart-wrapper{
 margin-top:50px;
 cursor:pointer;
@@ -105,9 +107,13 @@ filter:drop-shadow(0 0 20px rgba(183,110,121,.3));
 50%{transform:scale(1.3);}
 }
 
-.touch{color:#888;margin-top:10px;}
+.touch{
+color:#888;
+margin-top:10px;
+font-size:0.9rem;
+}
 
-/* reveal */
+/* REVEAL */
 .reveal{
 display:none;
 margin-top:40px;
@@ -123,9 +129,10 @@ to{opacity:1;transform:translateY(0);}
 color:#555;
 min-height:30px;
 margin:10px 0;
+font-size:1rem;
 }
 
-/* 💍 DATE (strong cinematic animation) */
+/* DATE */
 .date{
 font-family:'Great Vibes',cursive;
 font-size:5rem;
@@ -135,8 +142,57 @@ transform:scale(.4) rotate(-3deg);
 letter-spacing:2px;
 }
 
+/* NAMES */
+.names{
+font-size:1.2rem;
+margin-top:12px;
+color:#8b6f75;
+opacity:0;
+letter-spacing:1px;
+}
+
+/* FINAL */
+.final-text{
+opacity:0;
+color:#666;
+margin-top:10px;
+font-size:0.95rem;
+}
+
+/* BUTTON */
+.next-btn{
+opacity:0;
+margin-top:35px;
+transition:1s;
+transform:translateY(20px);
+}
+
+.next-btn a{
+background:#b76e79;
+color:white;
+padding:15px 42px;
+border-radius:50px;
+text-decoration:none;
+display:inline-block;
+}
+
+/* SHOW */
+.next-btn.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ANIMATIONS */
 .date.show{
 animation:datePop 1.4s ease forwards, dateGlow 2.5s infinite alternate;
+}
+
+.names.show{
+animation:namesReveal 1.2s ease forwards;
+}
+
+.final-text.show{
+animation:fadeUp 1s ease forwards;
 }
 
 @keyframes datePop{
@@ -150,34 +206,10 @@ from{text-shadow:0 0 10px rgba(183,110,121,.2);}
 to{text-shadow:0 0 30px rgba(183,110,121,.6);}
 }
 
-/* 💑 names (new animation added) */
-.names{
-font-size:1.4rem;
-margin-top:12px;
-color:#8b6f75;
-opacity:0;
-letter-spacing:1px;
-}
-
-.names.show{
-animation:namesReveal 1.2s ease forwards;
-}
-
 @keyframes namesReveal{
 0%{opacity:0;transform:translateY(15px);}
 70%{opacity:1;transform:translateY(-5px);}
 100%{opacity:1;transform:translateY(0);}
-}
-
-/* final text */
-.final-text{
-opacity:0;
-color:#666;
-margin-top:10px;
-}
-
-.final-text.show{
-animation:fadeUp 1s ease forwards;
 }
 
 @keyframes fadeUp{
@@ -185,29 +217,7 @@ from{opacity:0;transform:translateY(10px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* button (REMOVED animation as requested) */
-.next-btn{
-opacity:0;
-margin-top:35px;
-transition:1s;
-transform:translateY(20px);
-}
-
-.next-btn.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.next-btn a{
-background:#b76e79;
-color:white;
-padding:15px 42px;
-border-radius:50px;
-text-decoration:none;
-display:inline-block;
-}
-
-/* floating hearts */
+/* FLOATING HEARTS */
 .heart-float{
 position:fixed;
 font-size:18px;
@@ -218,6 +228,46 @@ animation:floatUp 8s linear forwards;
 0%{transform:translateY(100vh);opacity:0;}
 20%{opacity:1;}
 100%{transform:translateY(-100px);opacity:0;}
+}
+
+/* 📱 MOBILE RESPONSIVE FIX */
+@media(max-width:768px){
+
+h1{
+font-size:3.2rem;
+}
+
+.date{
+font-size:2.8rem;
+}
+
+.heart{
+font-size:4.5rem;
+}
+
+.subtitle{
+font-size:0.95rem;
+}
+
+.line{
+font-size:0.95rem;
+}
+
+.next-btn a{
+padding:12px 28px;
+font-size:0.95rem;
+}
+
+.container{
+padding:15px;
+}
+
+}
+
+/* VERY SMALL DEVICES */
+@media(max-width:380px){
+h1{font-size:2.8rem;}
+.date{font-size:2.3rem;}
 }
 
 </style>
@@ -306,23 +356,19 @@ setTimeout(()=>type(document.getElementById("line1"),
 setTimeout(()=>type(document.getElementById("line2"),
 "The day our forever begins...",50),2000);
 
-/* DATE */
 setTimeout(()=>{
 document.getElementById("date").classList.add("show");
 hearts();
 },4000);
 
-/* NAMES */
 setTimeout(()=>{
 document.getElementById("names").classList.add("show");
 },5200);
 
-/* FINAL */
 setTimeout(()=>{
 document.getElementById("finalText").classList.add("show");
 },6200);
 
-/* BUTTON (NO ANIMATION NOW) */
 setTimeout(()=>{
 document.getElementById("btn").classList.add("show");
 },7200);
