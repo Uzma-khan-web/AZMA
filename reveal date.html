@@ -16,30 +16,27 @@ padding:0;
 box-sizing:border-box;
 }
 
-html, body{
+html,body{
 width:100%;
-height:100%;
-overflow-x:hidden;   /* ✅ FIX horizontal scroll */
+overflow-x:hidden;
 }
 
 body{
 min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
+display:block;
 text-align:center;
 font-family:'Poppins',sans-serif;
 background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
-position:relative;
 color:#4a3f35;
-padding:20px;
-overflow-y:auto;   /* ✅ allow vertical but safe */
+padding:30px 15px;
+overflow-y:auto;
+position:relative;
 }
 
 /* glow */
 body::before, body::after{
 content:'';
-position:fixed;   /* ✅ FIX: fixed instead of absolute */
+position:fixed;
 border-radius:50%;
 filter:blur(140px);
 opacity:.45;
@@ -59,9 +56,9 @@ background:#f8e6c8;
 bottom:-250px;left:-150px;
 }
 
-/* sparks */
+/* spark */
 .spark{
-position:fixed;   /* ✅ FIX */
+position:fixed;
 width:5px;
 height:5px;
 background:#d8a7b1;
@@ -77,10 +74,9 @@ to{transform:translateY(-120vh);}
 }
 
 .container{
-position:relative;
-z-index:10;
 max-width:850px;
 width:100%;
+margin:0 auto;
 padding:10px;
 }
 
@@ -92,7 +88,7 @@ color:#b76e79;
 margin-bottom:20px;
 }
 
-/* SUBTITLE */
+/* subtitle */
 .subtitle{
 color:#666;
 line-height:2;
@@ -100,7 +96,7 @@ font-size:1rem;
 padding:0 10px;
 }
 
-/* HEART */
+/* heart */
 .heart-wrapper{
 margin-top:50px;
 cursor:pointer;
@@ -123,10 +119,11 @@ margin-top:10px;
 font-size:0.9rem;
 }
 
-/* REVEAL */
+/* reveal */
 .reveal{
 display:none;
 margin-top:40px;
+padding-bottom:50px;
 }
 
 .line{
@@ -135,7 +132,7 @@ min-height:30px;
 margin:10px 0;
 }
 
-/* DATE */
+/* date */
 .date{
 font-family:'Great Vibes',cursive;
 font-size:5rem;
@@ -145,7 +142,6 @@ transform:scale(.4) rotate(-3deg);
 letter-spacing:2px;
 }
 
-/* NAMES */
 .names{
 font-size:1.2rem;
 margin-top:12px;
@@ -153,7 +149,6 @@ color:#8b6f75;
 opacity:0;
 }
 
-/* FINAL */
 .final-text{
 opacity:0;
 color:#666;
@@ -161,10 +156,11 @@ margin-top:10px;
 font-size:0.95rem;
 }
 
-/* BUTTON */
+/* BUTTON FIXED */
 .next-btn{
 opacity:0;
 margin-top:35px;
+padding-bottom:50px;
 }
 
 .next-btn a{
@@ -176,7 +172,16 @@ text-decoration:none;
 display:inline-block;
 }
 
-/* ANIMATIONS SAME */
+/* SHOW STATES */
+.next-btn.show,
+.date.show,
+.names.show,
+.final-text.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* animations */
 .date.show{
 animation:datePop 1.4s ease forwards, dateGlow 2.5s infinite alternate;
 }
@@ -211,9 +216,9 @@ from{opacity:0;transform:translateY(10px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* FLOATING HEARTS */
+/* floating hearts */
 .heart-float{
-position:fixed;   /* ✅ FIX */
+position:fixed;
 font-size:18px;
 animation:floatUp 8s linear forwards;
 pointer-events:none;
@@ -225,7 +230,7 @@ pointer-events:none;
 100%{transform:translateY(-120px);opacity:0;}
 }
 
-/* 📱 MOBILE FIX */
+/* 📱 MOBILE */
 @media(max-width:768px){
 
 h1{font-size:3rem;}
@@ -236,11 +241,11 @@ h1{font-size:3rem;}
 padding:12px 28px;
 font-size:0.95rem;
 }
-
-.container{
-padding:15px;
 }
 
+@media(max-width:380px){
+h1{font-size:2.6rem;}
+.date{font-size:2.2rem;}
 }
 
 </style>
@@ -284,15 +289,17 @@ Every second until then, I'll be counting with you ❤️
 
 <script>
 
+/* sparks */
 for(let i=0;i<25;i++){
 let s=document.createElement("div");
 s.className="spark";
-s.style.left=Math.random()*100+"%";  // ✅ FIX vw issue
+s.style.left=Math.random()*100+"%";
 s.style.top=Math.random()*100+"%";
 s.style.animationDuration=(8+Math.random()*10)+"s";
 document.body.appendChild(s);
 }
 
+/* typewriter */
 function type(el,text,speed){
 let i=0;
 let t=setInterval(()=>{
@@ -302,17 +309,19 @@ if(i>=text.length) clearInterval(t);
 },speed);
 }
 
+/* hearts */
 function hearts(){
 setInterval(()=>{
 let h=document.createElement("div");
 h.className="heart-float";
 h.innerHTML="❤️";
-h.style.left=Math.random()*100+"%"; // ✅ FIX
+h.style.left=Math.random()*100+"%";
 document.body.appendChild(h);
 setTimeout(()=>h.remove(),8000);
 },500);
 }
 
+/* click */
 document.getElementById("heart").onclick=function(){
 
 this.style.display="none";
@@ -339,6 +348,7 @@ document.getElementById("finalText").classList.add("show");
 
 setTimeout(()=>{
 document.getElementById("btn").classList.add("show");
+window.scrollTo({top: document.body.scrollHeight, behavior:"smooth"});
 },7200);
 
 };
