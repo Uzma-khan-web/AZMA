@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Letter For Azhar ❤️ | #AZMA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+min-height:100vh;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#fff8f0,#f7e7ce,#fff8f0);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+overflow-x:hidden;
+}
+
+.container{
+width:100%;
+max-width:900px;
+text-align:center;
+}
+
+.title{
+font-family:'Great Vibes',cursive;
+font-size:4rem;
+color:#4a3f35;
+margin-bottom:10px;
+}
+
+.subtitle{
+color:#777;
+margin-bottom:30px;
+transition:0.6s ease;
+}
+
+/* ENVELOPE */
+.envelope{
+width:250px;
+height:160px;
+background:#b76e79;
+margin:0 auto;
+position:relative;
+cursor:pointer;
+border-radius:10px;
+box-shadow:0 15px 30px rgba(0,0,0,0.15);
+transition:0.6s ease;
+transform-style:preserve-3d;
+z-index:10;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:125px solid transparent;
+border-right:125px solid transparent;
+border-top:90px solid #d8939d;
+transform-origin:top;
+transition:0.8s ease;
+backface-visibility:hidden;
+}
+
+.envelope.open:before{
+transform:rotateX(180deg);
+}
+
+/* 💥 envelope hide animation */
+.envelope.hide{
+opacity:0;
+transform:scale(0.6) translateY(-30px);
+transition:0.6s ease;
+}
+
+/* LETTER */
+.letter{
+margin-top:40px;
+background:white;
+border-radius:25px;
+padding:40px;
+box-shadow:0 15px 40px rgba(0,0,0,0.1);
+display:none;
+animation:fadeIn 1s ease;
+}
+
+.letter h2{
+color:#b76e79;
+margin-bottom:20px;
+}
+
+.letter p{
+color:#555;
+line-height:1.9;
+margin-bottom:15px;
+}
+
+.signature{
+margin-top:20px;
+font-family:'Great Vibes',cursive;
+font-size:2.2rem;
+color:#b76e79;
+}
+
+/* IMAGE */
+.couple-frame{
+display:none;
+margin-top:35px;
+animation:fadeIn 1.5s ease;
+}
+
+.couple-frame img{
+width:320px;
+height:390px;
+object-fit:cover;
+border-radius:25px;
+border:6px solid #b76e79;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+transition:0.4s;
+}
+
+.couple-frame img:hover{
+transform:scale(1.03);
+}
+
+/* FINAL */
+.final{
+display:none;
+margin-top:40px;
+animation:fadeIn 2s ease;
+}
+
+.final h1{
+font-family:'Great Vibes', cursive;
+font-size:5rem;
+color:#b76e79;
+margin-bottom:25px;
+
+/* extra premium feel */
+letter-spacing:2px;
+text-shadow:0 4px 15px rgba(183,110,121,0.3);
+}
+.home-btn a{
+text-decoration:none;
+background:#b76e79;
+color:white;
+padding:14px 35px;
+border-radius:50px;
+transition:0.3s;
+}
+
+.home-btn a:hover{
+background:#9d5b66;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.couple-frame img{
+animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow{
+0%{
+transform:scale(1);
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+
+50%{
+transform:scale(1.03);
+box-shadow:0 0 35px rgba(183,110,121,0.6);
+}
+
+100%{
+transform:scale(1);
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 class="title">A Letter For You ❤️</h1>
+
+<p class="subtitle" id="subtitle">
+Click the envelope to open your surprise ✨
+</p>
+
+<div class="envelope" id="envelope"></div>
+
+<div class="letter" id="letter">
+
+<h2>Dear Azzy ❤️</h2>
+
+<p>I made this website just to put a smile on your face.</p>
+
+<p>We're getting closer to the big day, and honestly, that's both exciting and a little hard to believe. 😄</p>
+
+<p>I pray that Allah fills our journey with happiness, laughter, and lots of beautiful memories.</p>
+
+<p>Until then, keep smiling... and keep counting down with me. ❤️</p>
+
+<div class="signature">- Uzzi </div>
+
+</div>
+
+<div class="couple-frame" id="coupleFrame">
+<img src="images/UAK1.png" alt="Uzma & Azhar">
+</div>
+
+<div class="final" id="final">
+<h1>#AZMA</h1>
+
+<div class="home-btn">
+<a href="index.html">Back To Start</a>
+</div>
+</div>
+
+</div>
+
+<script>
+
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+const coupleFrame = document.getElementById("coupleFrame");
+const finalSection = document.getElementById("final");
+const subtitle = document.getElementById("subtitle");
+
+envelope.addEventListener("click", () => {
+
+envelope.classList.add("open");
+
+/* subtitle hide */
+setTimeout(() => {
+subtitle.style.opacity = "0";
+}, 400);
+
+setTimeout(() => {
+subtitle.style.display = "none";
+}, 1000);
+
+/* 💥 envelope disappear */
+setTimeout(() => {
+envelope.classList.add("hide");
+envelope.style.display = "none";
+}, 300);
+
+/* letter show */
+setTimeout(() => {
+letter.style.display = "block";
+letter.style.opacity = "0";
+setTimeout(()=>{
+letter.style.transition = "1s";
+letter.style.opacity = "1";
+},50);
+}, 800);
+
+/* image show */
+setTimeout(() => {
+coupleFrame.style.display = "block";
+}, 1800);
+
+/* final show */
+setTimeout(() => {
+finalSection.style.display = "block";
+}, 2800);
+
+});
+
+</script>
+
+</body>
+</html>

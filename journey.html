@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Journey Written By Allah | #AZMA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
+overflow-x:hidden;
+color:#4a3f35;
+}
+
+/* Background Glow */
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#f7d8de;
+border-radius:50%;
+top:-200px;
+right:-150px;
+filter:blur(120px);
+opacity:.4;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:400px;
+height:400px;
+background:#f8e6c8;
+border-radius:50%;
+bottom:-150px;
+left:-100px;
+filter:blur(120px);
+opacity:.4;
+z-index:-1;
+}
+
+/* Floating Hearts */
+
+.heart{
+position:fixed;
+font-size:24px;
+opacity:.15;
+animation:float 12s linear infinite;
+}
+
+.h1{left:10%;}
+.h2{left:50%;animation-duration:16s;}
+.h3{left:85%;animation-duration:10s;}
+
+@keyframes float{
+from{transform:translateY(100vh);}
+to{transform:translateY(-120vh);}
+}
+
+/* Hero */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:50px 20px;
+text-align:center;
+}
+
+.hero-content{
+max-width:900px;
+animation:fadeUp 1.2s ease;
+}
+
+.hashtag{
+color:#b76e79;
+font-weight:600;
+letter-spacing:4px;
+}
+
+.hero h1{
+font-family:'Great Vibes',cursive;
+font-size:5rem;
+margin-top:20px;
+color:#b76e79;
+}
+
+.hero p{
+margin-top:25px;
+font-size:1.2rem;
+line-height:2;
+color:#666;
+}
+
+/* Couple Photo (UPDATED - compact) */
+
+.couple-section{
+max-width:800px;
+margin:50px auto;   /* reduced spacing */
+padding:0 20px;
+text-align:center;
+}
+
+.couple-frame{
+background:white;
+padding:6px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,.10);
+display:inline-block;   /* IMPORTANT: card shrink ho jayega */
+}
+
+.couple-frame img{
+width:400px;      /* fixed smaller width */
+height:auto;
+display:block;
+border-radius:18px;
+}
+
+.name-tag{
+margin-top:12px;    /* reduced */
+font-size:1.2rem;
+font-weight:600;
+color:#b76e79;
+text-align:center;
+}
+
+/* Content */
+
+.message-section{
+max-width:800px;
+margin:80px auto;
+padding:0 20px;
+text-align:center;
+}
+
+.message-section p{
+font-size:1.15rem;
+line-height:2.2;
+color:#555;
+}
+
+.quote{
+margin-top:80px;
+font-family:'Great Vibes',cursive;
+font-size:3rem;
+color:#b76e79;
+line-height:1.5;
+}
+
+/* Continue Button */
+
+.btn-section{
+text-align:center;
+margin:80px 0 120px;
+}
+
+.btn{
+display:inline-block;
+padding:16px 40px;
+background:#b76e79;
+color:white;
+text-decoration:none;
+border-radius:50px;
+font-weight:600;
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+background:#a85e69;
+}
+
+/* Animation */
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.hero h1{font-size:3.5rem;}
+
+.hero p{font-size:1rem;}
+
+.quote{font-size:2rem;}
+
+.message-section p{font-size:1rem;}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="heart h1">❤️</div>
+<div class="heart h2">❤️</div>
+<div class="heart h3">❤️</div>
+
+<section class="hero">
+
+<div class="hero-content">
+
+
+
+<h1>
+A Journey Written By Allah
+</h1>
+
+<div class="hashtag">
+#AZMA
+</div>
+
+<p>
+Some stories begin with years of memories.<br>
+Ours begins with faith, family,<br>
+and a beautiful future waiting ahead.
+</p>
+
+</div>
+
+</section>
+
+<section class="couple-section">
+
+<div class="couple-frame">
+<img src="images/U&A.png" alt="Uzma & Azhar">
+</div>
+
+<div class="name-tag">
+Uzma ❤️ Azhar
+</div>
+
+</section>
+
+<section class="message-section">
+
+<p>
+Two families came together.<br>
+A conversation began.<br>
+And slowly, a new chapter started.
+</p>
+
+<br><br>
+
+<p>
+Not built on years of knowing each other,<br>
+but on trust, respect,<br>
+and the hope of a beautiful future.
+</p>
+
+<div class="quote">
+“Perhaps Allah wrote our names together<br>
+long before we ever knew each other.”
+</div>
+
+<br><br>
+
+<p>
+Some journeys start with love.<br>
+Ours starts with dua, faith,<br>
+and the promise of forever ❤️
+</p>
+
+</section>
+
+<div class="btn-section">
+
+<a href="countdown.html" class="btn">
+Continue To Our Countdown ⏳
+</a>
+
+</div>
+
+</body>
+</html>

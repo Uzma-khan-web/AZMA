@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>One More Thing ❤️ | #AZMA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
+position:relative;
+color:#4a3f35;
+animation:fadeBody 1.2s ease;
+}
+
+@keyframes fadeBody{
+from{opacity:0;transform:scale(1.02);}
+to{opacity:1;transform:scale(1);}
+}
+
+/* glow */
+body::before, body::after{
+content:'';
+position:absolute;
+border-radius:50%;
+filter:blur(140px);
+opacity:.45;
+}
+
+body::before{
+width:650px;height:650px;
+background:#f7d8de;
+top:-250px;right:-200px;
+}
+
+body::after{
+width:600px;height:600px;
+background:#f8e6c8;
+bottom:-250px;left:-150px;
+}
+
+/* sparks */
+.spark{
+position:absolute;
+width:5px;
+height:5px;
+background:#d8a7b1;
+border-radius:50%;
+opacity:.5;
+animation:rise 12s linear infinite;
+}
+
+@keyframes rise{
+from{transform:translateY(100vh);}
+to{transform:translateY(-100px);}
+}
+
+.container{
+position:relative;
+z-index:10;
+max-width:850px;
+padding:20px;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:5rem;
+color:#b76e79;
+margin-bottom:20px;
+}
+
+.subtitle{
+color:#666;
+line-height:2;
+}
+
+/* heart */
+.heart-wrapper{
+margin-top:50px;
+cursor:pointer;
+transition:.5s;
+}
+
+.heart{
+font-size:6rem;
+animation:beat 1.3s infinite;
+filter:drop-shadow(0 0 20px rgba(183,110,121,.3));
+}
+
+@keyframes beat{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.3);}
+}
+
+.touch{color:#888;margin-top:10px;}
+
+/* reveal */
+.reveal{
+display:none;
+margin-top:40px;
+animation:revealBox 1s ease;
+}
+
+@keyframes revealBox{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.line{
+color:#555;
+min-height:30px;
+margin:10px 0;
+}
+
+/* 💍 DATE (strong cinematic animation) */
+.date{
+font-family:'Great Vibes',cursive;
+font-size:5rem;
+color:#b76e79;
+opacity:0;
+transform:scale(.4) rotate(-3deg);
+letter-spacing:2px;
+}
+
+.date.show{
+animation:datePop 1.4s ease forwards, dateGlow 2.5s infinite alternate;
+}
+
+@keyframes datePop{
+0%{opacity:0;transform:scale(.4) rotate(-5deg);}
+70%{transform:scale(1.25) rotate(2deg);}
+100%{opacity:1;transform:scale(1) rotate(0);}
+}
+
+@keyframes dateGlow{
+from{text-shadow:0 0 10px rgba(183,110,121,.2);}
+to{text-shadow:0 0 30px rgba(183,110,121,.6);}
+}
+
+/* 💑 names (new animation added) */
+.names{
+font-size:1.4rem;
+margin-top:12px;
+color:#8b6f75;
+opacity:0;
+letter-spacing:1px;
+}
+
+.names.show{
+animation:namesReveal 1.2s ease forwards;
+}
+
+@keyframes namesReveal{
+0%{opacity:0;transform:translateY(15px);}
+70%{opacity:1;transform:translateY(-5px);}
+100%{opacity:1;transform:translateY(0);}
+}
+
+/* final text */
+.final-text{
+opacity:0;
+color:#666;
+margin-top:10px;
+}
+
+.final-text.show{
+animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* button (REMOVED animation as requested) */
+.next-btn{
+opacity:0;
+margin-top:35px;
+transition:1s;
+transform:translateY(20px);
+}
+
+.next-btn.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.next-btn a{
+background:#b76e79;
+color:white;
+padding:15px 42px;
+border-radius:50px;
+text-decoration:none;
+display:inline-block;
+}
+
+/* floating hearts */
+.heart-float{
+position:fixed;
+font-size:18px;
+animation:floatUp 8s linear forwards;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(100vh);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-100px);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>#AZMA</h1>
+
+<div class="subtitle">
+Before we start counting the days... ❤️
+</div>
+
+<div class="heart-wrapper" id="heart">
+<div class="heart">❤️</div>
+<div class="touch">Touch My Heart</div>
+</div>
+
+<div class="reveal" id="reveal">
+
+<div class="line" id="line1"></div>
+<div class="line" id="line2"></div>
+
+<div class="date" id="date">26 December 2026</div>
+
+<div class="names" id="names">Uzma ♥ Azhar</div>
+
+<div class="final-text" id="finalText">
+Every second until then, I'll be counting with you ❤️
+</div>
+
+<div class="next-btn" id="btn">
+<a href="countdown.html">Continue To Countdown ⏳</a>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* spark particles */
+for(let i=0;i<25;i++){
+let s=document.createElement("div");
+s.className="spark";
+s.style.left=Math.random()*100+"vw";
+s.style.animationDuration=(8+Math.random()*10)+"s";
+document.body.appendChild(s);
+}
+
+/* typewriter */
+function type(el,text,speed){
+let i=0;
+let t=setInterval(()=>{
+el.innerHTML+=text[i];
+i++;
+if(i>=text.length) clearInterval(t);
+},speed);
+}
+
+/* floating hearts */
+function hearts(){
+setInterval(()=>{
+let h=document.createElement("div");
+h.className="heart-float";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+},400);
+}
+
+/* click */
+document.getElementById("heart").onclick=function(){
+
+this.style.opacity="0";
+setTimeout(()=>this.style.display="none",500);
+
+document.getElementById("reveal").style.display="block";
+
+setTimeout(()=>type(document.getElementById("line1"),
+"The day I have been waiting for...",50),400);
+
+setTimeout(()=>type(document.getElementById("line2"),
+"The day our forever begins...",50),2000);
+
+/* DATE */
+setTimeout(()=>{
+document.getElementById("date").classList.add("show");
+hearts();
+},4000);
+
+/* NAMES */
+setTimeout(()=>{
+document.getElementById("names").classList.add("show");
+},5200);
+
+/* FINAL */
+setTimeout(()=>{
+document.getElementById("finalText").classList.add("show");
+},6200);
+
+/* BUTTON (NO ANIMATION NOW) */
+setTimeout(()=>{
+document.getElementById("btn").classList.add("show");
+},7200);
+
+};
+
+</script>
+
+</body>
+</html>

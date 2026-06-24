@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Countdown To Forever | #AZMA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+min-height:100vh;
+font-family:'Poppins',sans-serif;
+overflow:hidden;
+position:relative;
+text-align:center;
+background:linear-gradient(135deg,#fff8f0,#fdf6ee,#fff8f0);
+color:#4a3f35;
+}
+
+/* SOFT GLOW */
+body::before{
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:#f7d8de;
+border-radius:50%;
+filter:blur(140px);
+top:-250px;
+left:-250px;
+opacity:.5;
+}
+
+body::after{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:#f8e6c8;
+border-radius:50%;
+filter:blur(140px);
+bottom:-250px;
+right:-200px;
+opacity:.5;
+}
+
+/* FLOATING HEARTS */
+.hearts::before,
+.hearts::after{
+content:"❤";
+position:absolute;
+font-size:30px;
+color:rgba(183,110,121,.25);
+animation:float 10s linear infinite;
+}
+
+.hearts::before{left:20%;}
+.hearts::after{left:75%;animation-delay:5s;}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-100px);opacity:0;}
+}
+
+/* STAR */
+.star{
+position:absolute;
+width:4px;
+height:4px;
+background:#d8a7b1;
+border-radius:50%;
+opacity:.6;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.2;}
+to{opacity:1;}
+}
+
+/* CONTAINER */
+.container{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+z-index:10;
+padding:20px;
+}
+
+/* HEADER */
+.hashtag{
+letter-spacing:5px;
+font-weight:700;
+color:#b76e79;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:5rem;
+color:#b76e79;
+margin-top:10px;
+text-shadow:0 0 20px rgba(183,110,121,.15);
+}
+
+.subtitle{
+margin-top:10px;
+font-size:1.2rem;
+color:#6b5a5a;
+}
+
+.heart{
+display:inline-block;
+animation:beat 1.3s infinite;
+}
+
+@keyframes beat{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.3);}
+}
+
+.date{
+margin-top:15px;
+color:#b76e79;
+font-weight:600;
+}
+
+/* COUNTDOWN */
+.countdown{
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:50px;
+}
+
+/* ✨ UPDATED GLASS + GLOW CARD */
+.box{
+width:150px;
+height:150px;
+background:rgba(255,255,255,.55);
+backdrop-filter:blur(15px);
+border-radius:30px;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+position:relative;
+overflow:hidden;
+
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+transition:.3s;
+}
+
+/* ✨ LIGHT ANIMATED BORDER GLOW */
+.box::before{
+content:"";
+position:absolute;
+inset:-2px;
+border-radius:32px;
+
+background:linear-gradient(
+45deg,
+rgba(183,110,121,0),
+rgba(183,110,121,.5),
+rgba(248,230,200,.6),
+rgba(183,110,121,.4),
+rgba(183,110,121,0)
+);
+
+filter:blur(6px);
+opacity:.7;
+z-index:0;
+
+animation:glowMove 4s linear infinite;
+}
+
+@keyframes glowMove{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+/* content above glow */
+.box span,
+.box p{
+position:relative;
+z-index:2;
+}
+
+.box span{
+font-size:3rem;
+font-weight:700;
+color:#b76e79;
+}
+
+.box p{
+margin-top:10px;
+color:#6b5a5a;
+}
+
+/* hover effect */
+.box:hover{
+transform:translateY(-8px) scale(1.03);
+}
+
+.box:hover::before{
+opacity:1;
+filter:blur(8px);
+}
+
+/* MESSAGE */
+.message{
+margin-top:40px;
+font-size:1.1rem;
+color:#6b5a5a;
+max-width:600px;
+}
+
+/* BUTTON */
+.btn{
+margin-top:35px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+background:#b76e79;
+color:white;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(183,110,121,.25);
+transition:.3s;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+.surprise{
+display:none;
+margin-top:20px;
+color:#b76e79;
+font-size:1.1rem;
+animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+.next-btn{
+margin-top:30px;
+}
+
+.next-btn a{
+text-decoration:none;
+padding:14px 30px;
+border-radius:40px;
+border:1px solid rgba(183,110,121,.4);
+color:#b76e79;
+transition:.3s;
+}
+
+.next-btn a:hover{
+background:rgba(183,110,121,.1);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<div class="star" style="top:10%;left:15%;"></div>
+<div class="star" style="top:20%;left:80%;"></div>
+<div class="star" style="top:40%;left:60%;"></div>
+<div class="star" style="top:70%;left:20%;"></div>
+<div class="star" style="top:85%;left:90%;"></div>
+
+<div class="container">
+
+<div class="hashtag">#AZMA</div>
+
+<h1>Countdown To Our Nikah</h1>
+
+<div class="subtitle">
+Uzma Khan <span class="heart">❤️</span> Azhar Khan
+</div>
+
+<div class="date">26 December 2026</div>
+
+<div class="countdown">
+
+<div class="box"><span id="days">0</span><p>Days</p></div>
+<div class="box"><span id="hours">0</span><p>Hours</p></div>
+<div class="box"><span id="minutes">0</span><p>Minutes</p></div>
+<div class="box"><span id="seconds">0</span><p>Seconds</p></div>
+
+</div>
+
+<div class="message" id="quote">
+Every day brings us closer to forever ❤️
+</div>
+
+<button class="btn" onclick="showMessage()">
+Open Surprise 🎁
+</button>
+
+<div class="surprise" id="surprise">
+I can't wait to start this beautiful journey with you ❤️
+</div>
+
+<div class="next-btn">
+<a href="letter.html">Open My Letter 💌</a>
+</div>
+
+</div>
+
+<script>
+
+const weddingDate = new Date("December 26, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+document.getElementById("days").innerText =
+Math.max(Math.floor(distance/(1000*60*60*24)),0);
+
+document.getElementById("hours").innerText =
+Math.max(Math.floor((distance%(1000*60*60*24))/(1000*60*60)),0);
+
+document.getElementById("minutes").innerText =
+Math.max(Math.floor((distance%(1000*60*60))/(1000*60)),0);
+
+document.getElementById("seconds").innerText =
+Math.max(Math.floor((distance%(1000*60))/1000),0);
+
+},1000);
+
+function showMessage(){
+document.getElementById("surprise").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
