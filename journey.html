@@ -75,7 +75,7 @@ from{transform:translateY(100vh);}
 to{transform:translateY(-120vh);}
 }
 
-/* Hero */
+/* HERO */
 
 .hero{
 min-height:100vh;
@@ -111,11 +111,11 @@ line-height:2;
 color:#666;
 }
 
-/* Couple Photo (UPDATED - compact) */
+/* COUPLE SECTION */
 
 .couple-section{
 max-width:800px;
-margin:50px auto;   /* reduced spacing */
+margin:50px auto;
 padding:0 20px;
 text-align:center;
 }
@@ -125,25 +125,27 @@ background:white;
 padding:6px;
 border-radius:25px;
 box-shadow:0 20px 40px rgba(0,0,0,.10);
-display:inline-block;   /* IMPORTANT: card shrink ho jayega */
+display:inline-block;
 }
 
 .couple-frame img{
-width:400px;      /* fixed smaller width */
+width:400px;
+max-width:100%;
 height:auto;
 display:block;
 border-radius:18px;
+margin:auto;
 }
 
 .name-tag{
-margin-top:12px;    /* reduced */
+margin-top:12px;
 font-size:1.2rem;
 font-weight:600;
 color:#b76e79;
 text-align:center;
 }
 
-/* Content */
+/* MESSAGE */
 
 .message-section{
 max-width:800px;
@@ -166,7 +168,7 @@ color:#b76e79;
 line-height:1.5;
 }
 
-/* Continue Button */
+/* BUTTON */
 
 .btn-section{
 text-align:center;
@@ -189,14 +191,14 @@ transform:translateY(-4px);
 background:#a85e69;
 }
 
-/* Animation */
+/* ANIMATION */
 
 @keyframes fadeUp{
 from{opacity:0;transform:translateY(40px);}
 to{opacity:1;transform:translateY(0);}
 }
 
-/* Mobile */
+/* MOBILE FIX */
 
 @media(max-width:768px){
 
@@ -207,6 +209,26 @@ to{opacity:1;transform:translateY(0);}
 .quote{font-size:2rem;}
 
 .message-section p{font-size:1rem;}
+
+.couple-section{
+max-width:100%;
+margin:30px auto;
+padding:0 15px;
+}
+
+.couple-frame{
+padding:5px;
+border-radius:20px;
+}
+
+.couple-frame img{
+width:100%;
+max-width:320px;
+}
+
+.name-tag{
+font-size:1rem;
+}
 
 }
 
@@ -223,15 +245,9 @@ to{opacity:1;transform:translateY(0);}
 
 <div class="hero-content">
 
+<h1>A Journey Written By Allah</h1>
 
-
-<h1>
-A Journey Written By Allah
-</h1>
-
-<div class="hashtag">
-#AZMA
-</div>
+<div class="hashtag">#AZMA</div>
 
 <p>
 Some stories begin with years of memories.<br>
